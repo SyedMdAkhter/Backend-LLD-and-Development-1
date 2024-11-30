@@ -56,4 +56,9 @@ public class BankAccount {
             this.ownerName = ownerName;
         }
     }
+    public void printTransactionHistory() {
+        for (String transaction : transactionHistory) {
+            System.out.println(transaction);
+        }
+    }
 }
