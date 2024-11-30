@@ -1,15 +1,19 @@
 package OOP;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankAccount {
 
     private double balance;
     private String ownerName;
+    private List<String> transactionHistory = new ArrayList<>();
 
-    BankAccount(){
+    public BankAccount(){
         ownerName = null;
-        this.balance = 0;
+        balance = 0;
     }
-    BankAccount(String ownerName, double balance) {
+    public BankAccount(String ownerName, double balance) {
         this.ownerName = ownerName;
         this.balance = balance;
     }
@@ -17,18 +21,24 @@ public class BankAccount {
     public void deposit(double amount) {
         if (amount > 0) {
             balance = balance + amount;
+
         }
         balance = balance + amount;
+        transactionHistory.add("Deposit " + amount + " to " + ownerName);
     }
     public void withdraw(double amount) {
         if (balance >= amount) {
             balance = balance - amount;
         }
+        transactionHistory.add("Withdraw " + amount + " from " + ownerName);
 
     }
 
-    public double getBalance() {
-        return balance;
+    public double getBalance(String token) {
+        if(token.equals("$123")){
+            return balance;
+        }
+        throw new RuntimeException("Invalid token");
     }
 
     public void setBalance(double balance) {
